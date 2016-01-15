@@ -1,0 +1,236 @@
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        tools:context="com.example.adrin.detectorappsinseguras.Descripcion_app"
+        android:fillViewport="true"
+
+        >
+
+        <RelativeLayout
+            android:id="@+id/fondo_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/linearLayout">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView2"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_weight="1"
+                        android:layout_alignBottom="@+id/textView"
+                        android:layout_toLeftOf="@+id/textView"
+                        android:layout_toStartOf="@+id/textView" />
+
+
+                    <TextView android:layout_width="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:layout_height="60dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_weight="1"
+                        android:text="NOMBRE DEL PROGRAMA"
+                        android:id="@+id/textView"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Riesgo permisos"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold"
+                        android:id="@+id/permisos"
+                        android:layout_weight="1"
+                        android:layout_marginTop="44dp"
+                        android:paddingLeft="13dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/riesgoPermisos"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold"
+                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:layout_gravity="bottom"
+                        android:gravity="right|end"
+                        android:paddingRight="13dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Riesgo encriptacion"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:id="@+id/encriptacion"
+                        android:paddingLeft="13dp"
+                        android:layout_marginTop="34dp"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/riesgoEncriptacion"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:layout_alignTop="@+id/encriptacion"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="bottom"
+                        android:gravity="right|end"
+                        android:paddingRight="13dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Riesgo publicidad"
+                        android:id="@+id/publicidad"
+                        android:paddingLeft="13dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:layout_marginTop="42dp"
+                         />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/riesgoPublicidad"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_alignTop="@+id/publicidad"
+                        android:layout_gravity="bottom"
+                        android:gravity="right|end"
+                        android:paddingRight="13dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Riesgo total"
+                        android:textStyle="bold"
+                        android:paddingLeft="13dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:id="@+id/Totalrisk"
+                        android:layout_weight="1"
+                        android:layout_marginTop="53dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:id="@+id/riesgoTotal"
+                        android:layout_weight="1"
+                        android:gravity="right|end"
+                        android:paddingRight="13dp"
+                        android:layout_marginTop="53dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingTop="15dp"
+                android:drawableRight="@drawable/trash"
+                android:text="Desinstalar"
+                android:id="@+id/button3"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="34dp" />
+
+            <TextView
+                android:paddingTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_weight="1"
+                android:textColor="#FF0000"
+                android:id="@+id/warning"
+                android:layout_gravity="center_horizontal"
+                android:layout_above="@+id/desc_advertencia"
+                android:layout_centerHorizontal="true"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_weight="1"
+                android:textColor="#FF0000"
+                android:id="@+id/desc_advertencia"
+                android:layout_gravity="center_horizontal"
+
+                android:layout_above="@+id/button3"
+                android:layout_centerHorizontal="true"></TextView>
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+

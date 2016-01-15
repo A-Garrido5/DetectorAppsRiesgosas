@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">DetectorAppsRiesgosas</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_analizando">Analizando</string>
+    <string name="title_activity_list_of_applications">ListOfApplications</string>
+
+
+    <string name="title_activity_lista">Lista</string>
+    <string name="title_activity_elemento">elemento</string>
+    <string name="title_activity_consejos">Consejos</string>
+    <string name="title_activity_descripcion_app">Descripcion_app</string>
+    <string name="title_activity_informatio">Informatio</string>
+    <string name="title_activity_information">Information</string>
+
+    <string name="consejo1">"No almacene información privada en este dispositivo, como datos de cuentas, números de tarjeta, datos de negocio, etc. \n\nSu información no está del todo segura porque hay aplicaciones que pueden hacer uso malicioso de estos recursos."</string>
+    <string name="consejo2">"Preocupese de leer bien los permisos que tiene cada aplicación antes de instalarse. Es usted quien tiene la responsabilidad de no permitir aplicaciones sospechosas.\n\nAfortunadamente usted cuenta con esta herramienta que le permitirá conocer el riesgo que presenta cada aplicación."</string>
+    <string name="consejo3">"Desinstale las aplicaciones que esta aplicación determine como riesgosas, para poder asegurar la confidencialidad de su información"</string>
+    <string name="consejo4">"Mantenga apagado los recursos inalámbricos que NO esté usando, ya sea Wi-Fi, bluetooth, NFC, etc."</string>
+    <string name="consejo5">"Preocupese de cerrar sesión en cada una de las cuentas a las que acceda.\n\nSobre todo si se trata de cuentas bancarias, de tarjetas, etc."</string>
+    <string name="consejo6">"No instale aplicaciones de orígenes desconocidos, esta herramienta solo revisa una parte de las que se encuentra en Google Play, por lo que es más seguro que solo utilice esa fuente. "</string>
+
+    <string name="page1">"DetectorAppsInseguras es una aplicación destinada a encontrar vulnerabilidades en su dispositivo en cuanto a la protección de sus datos sensibles."</string>
+    <string name="page2">"Esta aplicación realiza una revisión de todas las aplicaciones que usted tiene instalada en su dispositivo y consulta a nuestra base de datos de acuerdo a su nivel de riesgo."</string>
+    <string name="page3">"Al hacer click en una de las aplicaciones se muestra en detalle el resultado del análisis para esa aplicación, de acuerdo al color del resultado usted puede saber que tan segura es."</string>
+    <string name="page4">"Si no existe información de alguna aplicación en nuestra base de datos, no se le asignará un color y se le mostrará el siguiente aviso."</string>
+    <string name="page5">"Si le aparece el aviso anterior, o la aplicación está en color rojo se le sugiere desinstalarla para asegurar el resguardo de su información. \n \n Será dirigido a Google Play para que realice la desinstalación."</string>
+    <string name="page6">"El riesgo de permisos indica la cantidad de recursos del dispositivo a la que la aplicación está accediendo, mientras mayor sean estos accesos, mayor será el riesgo."</string>
+    <string name="page7">"El riesgo de encriptación hace mención al método que tiene la aplicación para codificar los datos antes de enviarlos, existen algunos mecanismos de encriptación. más seguros que otros y nosotros lo analizamos."</string>
+    <string name="page8">"El riesgo de publicidad indica si quienes ofrecen sus productos por medio de las aplicaciones son fuentes confiables. De no ser así, nosotros le informaremos."</string>
+    <string name="page9">"En la pantalla de inicio tenemos una sección en la cual le daremos consejos, que serán de gran utilidad para que usted tome los cuidados correspondientes para no correr riesgos."</string>
+
+
+</resources>
