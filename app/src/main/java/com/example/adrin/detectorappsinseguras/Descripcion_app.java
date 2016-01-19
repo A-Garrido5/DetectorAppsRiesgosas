@@ -1,5 +1,6 @@
 package com.example.adrin.detectorappsinseguras;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,8 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.app.AlertDialog;
 
 
 public class Descripcion_app extends ActionBarActivity {
@@ -104,6 +108,62 @@ public class Descripcion_app extends ActionBarActivity {
             }
         });
 
+        LinearLayout permisos = (LinearLayout) findViewById(R.id.Permisos);
+        LinearLayout publicidad = (LinearLayout) findViewById(R.id.publicidad);
+        LinearLayout Encriptacion= (LinearLayout) findViewById(R.id.Encriptacion);
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Riesgo");
+
+        permisos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                alertDialog.setMessage("Descripción Riesgos de permisos");
+                alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.setIcon(R.drawable.ic_launcher);
+                alertDialog.show();
+
+            }
+        });
+
+        publicidad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                alertDialog.setMessage("Descripción Riesgos de publicidad");
+                alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.setIcon(R.drawable.ic_launcher);
+                alertDialog.show();
+
+            }
+        });
+
+        Encriptacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.setMessage("Descripción Riesgos de encriptación");
+                alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.setIcon(R.drawable.ic_launcher);
+                alertDialog.show();
+            }
+        });
+
+
+
+
 
 
 
@@ -168,6 +228,24 @@ public class Descripcion_app extends ActionBarActivity {
 
         colorDrawable = new ColorDrawable(getResources().getColor(R.color.white));
         return colorDrawable;
+
+    }
+
+    public void descripcionRiesgoPermisos(){
+
+
+
+    }
+
+    public void descripcionRiesgoPublicidad(){
+
+        Toast.makeText(Descripcion_app.this, "Describir riesgo Publicidad", Toast.LENGTH_LONG).show();
+
+    }
+
+    public void descripcionRiesgoEncriptacion(){
+
+        Toast.makeText(Descripcion_app.this, "Describir riesgo Encriptacion", Toast.LENGTH_LONG).show();
 
     }
 }
