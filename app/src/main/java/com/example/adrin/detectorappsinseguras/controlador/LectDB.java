@@ -74,7 +74,7 @@ public class LectDB extends AsyncTask<Integer, Integer, Boolean>{
                 json = new JSONObject(bala);
             }
             catch (JSONException o){
-                System.out.println(o.getCause());
+                json= new JSONObject();
             }
             System.out.println("al abrir la conexion: " + e.getMessage());
             e.printStackTrace();
