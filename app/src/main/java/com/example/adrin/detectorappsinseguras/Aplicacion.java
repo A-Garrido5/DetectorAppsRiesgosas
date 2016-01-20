@@ -49,18 +49,18 @@ public class Aplicacion {
             nivel_riesgo=Integer.parseInt(riesgo.substring(0,riesgo.length()-1));
 
 
-        if(nivel_riesgo<40 && nivel_riesgo!=0) {
+        if(nivel_riesgo<30 && nivel_riesgo!=0) {
             colorDrawable = new ColorDrawable(context.getResources().getColor(R.color.verde_riesgo));
             return colorDrawable;
         }
 
-        else if(nivel_riesgo>=40 && nivel_riesgo<75){
+        else if(nivel_riesgo>=30 && nivel_riesgo<60){
             colorDrawable = new ColorDrawable(context.getResources().getColor(R.color.amarillo_riesgo));
             return colorDrawable;
 
         }
 
-        else if(nivel_riesgo>75){
+        else if(nivel_riesgo>60){
             colorDrawable = new ColorDrawable(context.getResources().getColor(R.color.rojo_riesgo));
             return colorDrawable;
 

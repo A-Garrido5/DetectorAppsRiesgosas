@@ -265,7 +265,7 @@ public class Lista extends ActionBarActivity {
                 {
 
                     String packetName = PackInfo.applicationInfo.packageName;
-                    //System.out.println(packetName);
+                    System.out.println(packetName);
                     String AppName = PackInfo.applicationInfo.loadLabel(getPackageManager()).toString();
                     Drawable icon = PackInfo.applicationInfo.loadIcon(getPackageManager());
 

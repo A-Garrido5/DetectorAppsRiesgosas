@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,9 +39,9 @@ public class Descripcion_app extends ActionBarActivity {
 
         String nameApp=getIntent().getExtras().getString("nombre");
 
-        String riesgoPermisos=getIntent().getExtras().getString("riesgoPermisos");
-        String riesgoEncriptacion=getIntent().getExtras().getString("riesgoEncriptacion");
-        String riesgoPublicidad=getIntent().getExtras().getString("riesgoPublicidad");
+        final String riesgoPermisos=getIntent().getExtras().getString("riesgoPermisos");
+        final String riesgoEncriptacion=getIntent().getExtras().getString("riesgoEncriptacion");
+        final String riesgoPublicidad=getIntent().getExtras().getString("riesgoPublicidad");
 
         String riesgoTotal=getIntent().getExtras().getString("riesgoTotal");
 
@@ -67,8 +68,24 @@ public class Descripcion_app extends ActionBarActivity {
         nombre.setText(nameApp);
 
         riskPerm.setText(riesgoPermisos);
-        riskEnc.setText(riesgoEncriptacion);
-        riskPub.setText(riesgoPublicidad);
+        if(riesgoEncriptacion.equals("0%")){
+            riskEnc.setText("Negativo");
+        }
+
+        else{
+            riskEnc.setText("Positivo");
+        }
+
+
+
+        if(riesgoPublicidad.equals("-1%")){
+            riskPub.setText("?");
+        }
+
+        else{
+            riskPub.setText(riesgoPublicidad);
+        }
+
         totalRisk.setText(riesgoTotal);
 
         Bitmap bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
@@ -119,7 +136,27 @@ public class Descripcion_app extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                alertDialog.setMessage("Descripción Riesgos de permisos");
+                if(riesgoPermisos.equals("0%")){
+                    alertDialog.setMessage("Esta aplicación NO utiliza permisos");
+                }
+
+                int nivel_riesgo=Integer.parseInt(riesgoPermisos.substring(0,riesgoPermisos.length()-1));
+
+
+                if(nivel_riesgo>0 && nivel_riesgo <30){
+
+                    alertDialog.setMessage("El nivel de riesgo de los permisos que utiliza esta aplicación es bajo");
+
+                }
+
+                else if(nivel_riesgo>=30 && nivel_riesgo <=60){
+                    alertDialog.setMessage("El nivel de riesgo de los permisos que utiliza esta aplicación es medio, se le recomienda tomar medidas de prevención.");
+                }
+
+                else if(nivel_riesgo>60){
+                    alertDialog.setMessage("El nivel de riesgo de permisos es ALTO, se le recomienda DESINSTALAR esta aplicación.");
+                }
+
                 alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -135,7 +172,31 @@ public class Descripcion_app extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                alertDialog.setMessage("Descripción Riesgos de publicidad");
+                if(riesgoPublicidad.equals("-1%")){
+                    alertDialog.setMessage("Esta aplicación utiliza funciones de publicidad de las cuales no hay registro.");
+                }
+
+                else if(riesgoPublicidad.equals("0%")){
+                    alertDialog.setMessage("Esta aplicación NO utiliza bibliotecas de publicidad.");
+                }
+
+                int nivel_riesgo=Integer.parseInt(riesgoPublicidad.substring(0,riesgoPublicidad.length()-1));
+
+
+                if(nivel_riesgo>0 && nivel_riesgo <30){
+
+                    alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es bajo.");
+
+                }
+
+                else if(nivel_riesgo>=30 && nivel_riesgo <=60){
+                    alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es medio, se le recomienda tomar medidas de prevención.");
+                }
+
+                else if(nivel_riesgo>60){
+                    alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es ALTO, se le recomienda DESINSTALAR esta aplicación.");
+                }
+
                 alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -150,7 +211,18 @@ public class Descripcion_app extends ActionBarActivity {
         Encriptacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialog.setMessage("Descripción Riesgos de encriptación");
+
+                int nivel_riesgo=Integer.parseInt(riesgoEncriptacion.substring(0,riesgoEncriptacion.length()-1));
+
+                if(nivel_riesgo==1){
+                    alertDialog.setMessage("Esta aplicación encripta datos, por lo que pudiera impedirle acceder a parte de su información.");
+                }
+
+                else{
+                    alertDialog.setMessage("Esta aplicación NO utiliza encriptación, por lo que no puede codificar sus datos.");
+                }
+
+
                 alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -205,14 +277,14 @@ public class Descripcion_app extends ActionBarActivity {
             nivel_riesgo=Integer.parseInt(riesgo.substring(0,riesgo.length()-1));
 
 
-            if (nivel_riesgo < 40 && nivel_riesgo != 0) {
+            if (nivel_riesgo < 30 && nivel_riesgo != 0) {
                 colorDrawable = new ColorDrawable(getResources().getColor(R.color.verde_riesgo));
                 return colorDrawable;
-            } else if (nivel_riesgo >= 40 && nivel_riesgo < 75) {
+            } else if (nivel_riesgo >= 30 && nivel_riesgo <= 60) {
                 colorDrawable = new ColorDrawable(getResources().getColor(R.color.amarillo_riesgo));
                 return colorDrawable;
 
-            } else if (nivel_riesgo > 75) {
+            } else if (nivel_riesgo >60 ) {
                 colorDrawable = new ColorDrawable(getResources().getColor(R.color.rojo_riesgo));
                 return colorDrawable;
 
@@ -231,21 +303,4 @@ public class Descripcion_app extends ActionBarActivity {
 
     }
 
-    public void descripcionRiesgoPermisos(){
-
-
-
-    }
-
-    public void descripcionRiesgoPublicidad(){
-
-        Toast.makeText(Descripcion_app.this, "Describir riesgo Publicidad", Toast.LENGTH_LONG).show();
-
-    }
-
-    public void descripcionRiesgoEncriptacion(){
-
-        Toast.makeText(Descripcion_app.this, "Describir riesgo Encriptacion", Toast.LENGTH_LONG).show();
-
-    }
 }
