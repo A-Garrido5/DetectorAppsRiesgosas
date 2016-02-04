@@ -72,8 +72,14 @@ public class Descripcion_app extends ActionBarActivity {
             riskEnc.setText("Negativo");
         }
 
-        else{
+        else if (riesgoEncriptacion.equals("1%")){
             riskEnc.setText("Positivo");
+        }
+
+        else{
+
+            riskEnc.setText("-");
+
         }
 
 
@@ -140,21 +146,28 @@ public class Descripcion_app extends ActionBarActivity {
                     alertDialog.setMessage("Esta aplicación NO utiliza permisos");
                 }
 
-                int nivel_riesgo=Integer.parseInt(riesgoPermisos.substring(0,riesgoPermisos.length()-1));
-
-
-                if(nivel_riesgo>0 && nivel_riesgo <30){
-
-                    alertDialog.setMessage("El nivel de riesgo de los permisos que utiliza esta aplicación es bajo");
-
+                if(riesgoPermisos.equals("-")){
+                    alertDialog.setMessage("No hay registros de esta aplicación.");
                 }
 
-                else if(nivel_riesgo>=30 && nivel_riesgo <=60){
-                    alertDialog.setMessage("El nivel de riesgo de los permisos que utiliza esta aplicación es medio, se le recomienda tomar medidas de prevención.");
-                }
+                if(!riesgoPermisos.equals("-")) {
 
-                else if(nivel_riesgo>60){
-                    alertDialog.setMessage("El nivel de riesgo de permisos es ALTO, se le recomienda DESINSTALAR esta aplicación.");
+                    int nivel_riesgo = Integer.valueOf(riesgoPermisos.substring(0, riesgoPermisos.length() - 1));
+
+
+                    if (nivel_riesgo > 0 && nivel_riesgo < 30) {
+
+                        alertDialog.setMessage("El nivel de riesgo de los permisos que utiliza esta aplicación es bajo");
+
+                    } else if (nivel_riesgo >= 30 && nivel_riesgo <= 60) {
+                        alertDialog.setMessage("El nivel de riesgo de los permisos que utiliza esta aplicación es medio, se le recomienda tomar medidas de prevención.");
+                    } else if (nivel_riesgo > 60) {
+                        alertDialog.setMessage("El nivel de riesgo de permisos es ALTO, se le recomienda DESINSTALAR esta aplicación.");
+                    } else {
+
+                        alertDialog.setMessage("No hay registros de esta aplicación.");
+
+                    }
                 }
 
                 alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -180,21 +193,30 @@ public class Descripcion_app extends ActionBarActivity {
                     alertDialog.setMessage("Esta aplicación NO utiliza bibliotecas de publicidad.");
                 }
 
-                int nivel_riesgo=Integer.parseInt(riesgoPublicidad.substring(0,riesgoPublicidad.length()-1));
+                else{
 
-
-                if(nivel_riesgo>0 && nivel_riesgo <30){
-
-                    alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es bajo.");
+                    alertDialog.setMessage("No hay registros de esta aplicación.");
 
                 }
 
-                else if(nivel_riesgo>=30 && nivel_riesgo <=60){
-                    alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es medio, se le recomienda tomar medidas de prevención.");
-                }
+                if(!riesgoPublicidad.equals("-")) {
 
-                else if(nivel_riesgo>60){
-                    alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es ALTO, se le recomienda DESINSTALAR esta aplicación.");
+
+                    int nivel_riesgo = Integer.parseInt(riesgoPublicidad.substring(0, riesgoPublicidad.length() - 1));
+
+
+                    if (nivel_riesgo > 0 && nivel_riesgo < 30) {
+
+                        alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es bajo.");
+
+                    } else if (nivel_riesgo >= 30 && nivel_riesgo <= 60) {
+                        alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es medio, se le recomienda tomar medidas de prevención.");
+                    } else if (nivel_riesgo > 60) {
+                        alertDialog.setMessage("El nivel de riesgo de las bibliotecas de publicidad es ALTO, se le recomienda DESINSTALAR esta aplicación.");
+                    } else {
+                        alertDialog.setMessage("No hay registros de esta aplicación.");
+
+                    }
                 }
 
                 alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -212,16 +234,21 @@ public class Descripcion_app extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                int nivel_riesgo=Integer.parseInt(riesgoEncriptacion.substring(0,riesgoEncriptacion.length()-1));
-
-                if(nivel_riesgo==1){
-                    alertDialog.setMessage("Esta aplicación encripta datos, por lo que pudiera impedirle acceder a parte de su información.");
+                if(riesgoEncriptacion.equals("-")){
+                    alertDialog.setMessage("No hay registros de esta aplicación.");
                 }
 
-                else{
-                    alertDialog.setMessage("Esta aplicación NO utiliza encriptación, por lo que no puede codificar sus datos.");
-                }
+                if(!riesgoEncriptacion.equals("-")) {
 
+                    int nivel_riesgo = Integer.parseInt(riesgoEncriptacion.substring(0, riesgoEncriptacion.length() - 1));
+
+                    if (nivel_riesgo == 1) {
+                        alertDialog.setMessage("Esta aplicación encripta datos, por lo que pudiera impedirle acceder a parte de su información.");
+                    } else if (nivel_riesgo == 0) {
+                        alertDialog.setMessage("Esta aplicación NO utiliza encriptación, por lo que no puede codificar sus datos.");
+                    }
+
+                }
 
                 alertDialog.setButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
