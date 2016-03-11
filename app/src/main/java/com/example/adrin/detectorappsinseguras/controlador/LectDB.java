@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.util.Base64;
 
 import com.example.adrin.detectorappsinseguras.Lista;
 
@@ -43,7 +44,6 @@ public class LectDB extends AsyncTask<Integer, Integer, Boolean>{
         if(ConnectionDetected.isNetworkAvailable(mcontext)==-1){
             this.conexion=-1;
         }
-
         try{
             URL url = new URL(URL_DB);
             URLConnection uc = url.openConnection();
@@ -52,8 +52,12 @@ public class LectDB extends AsyncTask<Integer, Integer, Boolean>{
             BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
             String linea = br.readLine();
 
-            System.out.println("Linea leida: "+ linea);
             try {
+
+                byte[] data = Base64.decode(linea, Base64.DEFAULT);
+                linea = new String(data, "UTF-8");
+
+
                 json = new JSONObject(linea);
                 this.estadoTerminado = true;
             }
@@ -68,10 +72,9 @@ public class LectDB extends AsyncTask<Integer, Integer, Boolean>{
             try {
                 SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mcontext);
 
-                String bala=settings.getString("nombre","0");
+                String vacio=settings.getString("nombre","0");
 
-                System.out.println(bala);
-                json = new JSONObject(bala);
+                json = new JSONObject(vacio);
             }
             catch (JSONException o){
                 json= new JSONObject();
@@ -97,7 +100,7 @@ public class LectDB extends AsyncTask<Integer, Integer, Boolean>{
         return json;
     }
 
-    public Boolean getEstadoTerminado(){
-        return this.estadoTerminado;
-    }
+
 }
+
+

@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textView2"
+        android:text="Analizando"
         android:layout_below="@+id/progress_programa"
         android:layout_centerHorizontal="true" />
 

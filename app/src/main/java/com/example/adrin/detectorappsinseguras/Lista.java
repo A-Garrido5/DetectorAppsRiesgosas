@@ -113,11 +113,7 @@ public class Lista extends ActionBarActivity {
 
 
 
-    /**
-     * Clase que se encarga de leer los programas del telefono, al temrinar
-     * cruzaral ai nfo con lo obtenido por la web y enviara a la pantalla prinzipal
-     * la lista con los programas completo y su nivel de riesgo.
-     */
+
     private class CargandoProgramas extends AsyncTask<Void, Integer, Boolean> {
 
         private ArrayList<String> programasLista;
@@ -127,8 +123,8 @@ public class Lista extends ActionBarActivity {
 
         private LectDB dbLecturaExterna;
 
-        public CargandoProgramas(LectDB dbLecturaExterna)
-        {
+        public CargandoProgramas(LectDB dbLecturaExterna){
+
             this.programasLista = new ArrayList<>();
             this.packetProgramasLista = new ArrayList<>();
             this.imgProgramas = new ArrayList<>();
@@ -138,27 +134,47 @@ public class Lista extends ActionBarActivity {
             this.dbLecturaExterna = dbLecturaExterna;
         }
 
+        public void getInstalledApps(){
+
+            List<PackageInfo> PackList = getPackageManager().getInstalledPackages(0);
+            for (int i=0; i < PackList.size(); i++)
+            {
+                PackageInfo PackInfo = PackList.get(i);
+                if(((PackInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) != true)
+                {
+
+                    String packetName = PackInfo.applicationInfo.packageName;
+                    System.out.println(packetName);
+                    String AppName = PackInfo.applicationInfo.loadLabel(getPackageManager()).toString();
+                    Drawable icon = PackInfo.applicationInfo.loadIcon(getPackageManager());
+
+                    if(!packetName.equals("com.example.adrin.detectorappsinseguras"))
+                    {
+                        Aplicacion app = new Aplicacion(AppName,"-", icon,packetName,"-","-","-",mcontext);
+                        this.apps.add(app);
+
+                        this.imgProgramas.add(icon);
+                        this.packetProgramasLista.add(packetName);
+                        this.programasLista.add(AppName);
+
+                    }
+                }
+            }
+        }
+
         @Override
-        protected Boolean doInBackground(Void... voids)
-        {
+        protected Boolean doInBackground(Void... voids){
             getInstalledApps();
 
             JSONObject elementosDB = dbLecturaExterna.getDB();
-            String str = elementosDB.toString();
+            String guardar = elementosDB.toString();
 
-            //if you want to convert list to json (with Gson):
-            //foo - will be your list
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(mcontext);
             SharedPreferences.Editor prefEditor = sharedPref.edit();
-            prefEditor.putString("nombre", str);
+            prefEditor.putString("nombre", guardar);
             prefEditor.commit();
 
-
-
-
-
-            try
-            {
+            try {
                 JSONArray programas = elementosDB.getJSONArray("nombre");
 
                 HashMap<String, Integer> progHashMap = new HashMap<String, Integer>();
@@ -166,7 +182,7 @@ public class Lista extends ActionBarActivity {
                 HashMap<String, Integer> riskPub = new HashMap<String, Integer>();
                 HashMap<String, Integer> riskEnc = new HashMap<String, Integer>();
 
-                Integer bla=0;
+                Integer riesgo=0;
 
                 for (int i = 0; i < programas.length(); i++)
                 {
@@ -182,26 +198,22 @@ public class Lista extends ActionBarActivity {
                         n = (String) it.next();
 
                         if(n.equals("riesgoPermisos")){
-                            bla = Integer.parseInt(j.getString(n));
+                            riesgo = Integer.parseInt(j.getString(n));
                         }
 
                         if(n.equals("Name")){
                             keyPacket += j.getString(n);
-
-                            //System.out.println("Nombre: " + keyPacket);
                         }
-
 
                         if(n.equals("riesgoPublicidad")){
                             Integer seg = Integer.parseInt(j.getString(n));
                             riskPub.put(keyPacket, seg);
-
                         }
 
                         if(n.equals("riesgoEncriptacion")){
                             Integer seg = Integer.parseInt(j.getString(n));
                             riskEnc.put(keyPacket, seg);
-                            riskPerm.put(keyPacket,bla);
+                            riskPerm.put(keyPacket,riesgo);
                         }
 
                         if(n.equals("riesgoTotal") && keyPacket!=null )
@@ -255,40 +267,10 @@ public class Lista extends ActionBarActivity {
             return true;
         }
 
-        public void getInstalledApps()
-        {
-            List<PackageInfo> PackList = getPackageManager().getInstalledPackages(0);
-            for (int i=0; i < PackList.size(); i++)
-            {
-                PackageInfo PackInfo = PackList.get(i);
-                if(((PackInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) != true)
-                {
 
-                    String packetName = PackInfo.applicationInfo.packageName;
-                    System.out.println(packetName);
-                    String AppName = PackInfo.applicationInfo.loadLabel(getPackageManager()).toString();
-                    Drawable icon = PackInfo.applicationInfo.loadIcon(getPackageManager());
-
-
-                    if(!packetName.equals("com.example.adrin.detectorappsinseguras"))
-                    {
-                        Aplicacion app = new Aplicacion(AppName,"-", icon,packetName,"-","-","-",mcontext);
-                        this.apps.add(app);
-
-                        this.imgProgramas.add(icon);
-                        this.packetProgramasLista.add(packetName);
-                        this.programasLista.add(AppName);
-
-
-                    }
-                }
-            }
-
-
-        }
 
         @Override
-        protected void onPostExecute(Boolean aBoolean) {
+        protected void onPostExecute(Boolean aBoolean){
             if(aBoolean)
             {
 
@@ -355,4 +337,6 @@ public class Lista extends ActionBarActivity {
             }
         }
     }
+
+
 }

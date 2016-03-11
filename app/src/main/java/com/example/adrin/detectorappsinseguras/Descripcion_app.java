@@ -30,12 +30,8 @@ public class Descripcion_app extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion_app);
 
-
-
         Bundle extras = getIntent().getExtras();
         byte[] b = extras.getByteArray("icono");
-
-
 
         String nameApp=getIntent().getExtras().getString("nombre");
 
@@ -45,16 +41,12 @@ public class Descripcion_app extends ActionBarActivity {
 
         String riesgoTotal=getIntent().getExtras().getString("riesgoTotal");
 
-
         final String nombrePaquete=getIntent().getExtras().getString("nombrePaquete");
 
         RelativeLayout fondo_app=(RelativeLayout)findViewById(R.id.fondo_app);
 
-
-
         if(riesgoTotal!="-")
             fondo_app.setBackground(getColor(riesgoTotal));
-
 
         TextView nombre= (TextView)findViewById(R.id.textView);
 
@@ -331,3 +323,5 @@ public class Descripcion_app extends ActionBarActivity {
     }
 
 }
+
+
